@@ -31,8 +31,8 @@ cc.Class({
         }else{
             mon.getFromPool();
         }
-        let monType = Math.floor(battle.battleManager.getRandom() * 2);
-        mon.resetStatus(battle.battleManager.winSize.width, battle.battleManager.winSize.height * .1 +  battle.battleManager.winSize.height * .3 * battle.battleManager.getRandom(), monType);
+        let monType = battle.battleManager.getRandom()<0.5?-1:1;
+        mon.resetStatus(battle.battleManager.winSize.width, battle.battleManager.winSize.height * .25 * battle.battleManager.getRandom(), monType);
     },
 
     clear:function(){

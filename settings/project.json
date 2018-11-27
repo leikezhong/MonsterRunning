@@ -13,11 +13,18 @@
     [
       false,
       false,
+      true,
       true
     ],
     [
       false,
       true,
+      true
+    ],
+    [
+      false,
+      true,
+      false,
       false
     ]
   ],
@@ -28,8 +35,9 @@
   "fit-width": false,
   "group-list": [
     "default",
-    "character",
-    "monster"
+    "char",
+    "mon1",
+    "mon2"
   ],
   "simulator-orientation": true,
   "simulator-resolution": {

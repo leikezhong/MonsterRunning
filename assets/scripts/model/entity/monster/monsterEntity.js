@@ -13,22 +13,26 @@ cc.Class({
     },
 
     initEntity:function(){
-        this.useEntity = cc.instantiate(cc.loader.getRes("prefab/monster_prefab"));
+        this.useEntity = cc.instantiate(cc.loader.getRes("prefab/" + this.prefabName));
         this.useEntity.parent = battle.layerManager.playerLayer;
 
         this.useCollision = this.useEntity.getChildByName("monster_collision").getComponent(cc.BoxCollider);
         if(this.useCollision){
+            this.useCollisionWid = this.useCollision.size.width;
+            this.useCollisionHei = this.useCollision.size.height;
             this.useCollision.host = this;
         }
     },
 
     getFromPool:function(){
         this._super();
+        this.useCollision.enabled = true;
     },
 
     putInPool:function(){
         this._super();
-        this.setEntityPos(-1000, 0);
+        this.useCollision.enabled = false;
+        // this.setEntityPos(-1000, 0);
     },
 
     onCollisionEnter:function(other){
