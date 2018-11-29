@@ -8,7 +8,19 @@ cc.Class({
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {},
+    onLoad () {
+        this.allManager = [
+            "dungeonManager",
+            "resourceManager"
+        ];
+
+        for(let i = 0; i < this.allManager.length; i++){
+            let manager = require(this.allManager[i]);
+            battle[this.allManager[i]] = new manager();
+            battle[this.allManager[i]].init();
+        }
+
+    },
 
     start () {
         cc.director.preloadScene("selectScene", function () {

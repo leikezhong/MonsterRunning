@@ -2,21 +2,13 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-       
+       dungeon_layout:cc.Layout
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        this.allManager = [
-            "dungeonManager"
-        ];
-
-        for(let i = 0; i < this.allManager.length; i++){
-            let manager = require(this.allManager[i]);
-            battle[this.allManager[i]] = new manager();
-            battle[this.allManager[i]].init();
-        }
+        battle.resourceManager.loadBaseResource(this.loadComplete.bind(this));
     },
 
     start () {
@@ -25,10 +17,19 @@ cc.Class({
         });
     },
 
-    selectDungeonFunc:function(event, customEventData){
+    loadComplete:function(){
+        for(let i = 0; i < 10; i++){
+            let dungeonBtn = cc.instantiate(cc.loader.getRes("prefab/dungeon_btn_prefab"));
+            dungeonBtn.parent = this.dungeon_layout.node;
+            dungeonBtn.name = (i + 1) + "";
+            dungeonBtn.getChildByName("dungeon_index").getComponent(cc.Label).string = (i + 1);
+            dungeonBtn.on(cc.Node.EventType.TOUCH_START, this.selectDungeonFunc, this);
+        }
+    },
+
+    selectDungeonFunc:function(event){
         // console.log(event);
-        // console.log(customEventData);
-        battle.dungeonManager.nowDungeonIndex = customEventData;
+        battle.dungeonManager.nowDungeonIndex = event.target.name;
         cc.director.loadScene("battleScene");
     }
 

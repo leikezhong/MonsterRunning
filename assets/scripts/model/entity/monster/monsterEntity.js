@@ -27,11 +27,13 @@ cc.Class({
     getFromPool:function(){
         this._super();
         this.useCollision.enabled = true;
+        this.useEntity.active = false;
     },
 
     putInPool:function(){
         this._super();
         this.useCollision.enabled = false;
+        this.useEntity.active = false;
         // this.setEntityPos(-1000, 0);
     },
 

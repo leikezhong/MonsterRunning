@@ -15,6 +15,9 @@ cc.Class({
         this.startJumpStatus = false;
         this.jumpCut = 0.7;
         this.jumpMaxVelY = 20;
+        this.canOperate = true;
+        this.canJump = true;
+        this.canChangeYDirect = true;
     },
 
     initEntity:function(){
@@ -58,6 +61,9 @@ cc.Class({
     },
 
     startJump:function(){
+        if(!this.canOperate) return;
+        if(!this.canJump)   return;
+        if(!this.canChangeYDirect)  return;
         if(!this.startJumpStatus){
             this.jumpStartY = this.nowEntityPos.y;
             this.startJumpStatus = true;
@@ -66,6 +72,9 @@ cc.Class({
     },
 
     changeDirect:function(){
+        if(!this.canOperate) return;
+        if(!this.canJump)   return;
+        if(!this.canChangeYDirect)  return;
         if(!this.startJumpStatus){
             this.entityYDirect = -this.entityYDirect;
             this.setEntityPosY(this.nowEntityPos.y + this.entityYDirect * this.useRadius * 2);

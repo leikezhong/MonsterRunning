@@ -1,3 +1,4 @@
+//普通，被角色踩踏会返回，并且与后续的碰撞会让后续的返回
 var monsterEntity = require("monsterEntity");
 cc.Class({
     extends:monsterEntity,
@@ -18,6 +19,7 @@ cc.Class({
 
     onCollisionEnter:function(other){
         // console.log("enter");
+        this._super();
         if(other.entityType == gameConst.ENTITY_TYPE.CHARACTER){
             if(this.entityYDirect == 1){
                 if(this.nowEntityPos.y >= other.nowEntityPos.y){
@@ -41,14 +43,6 @@ cc.Class({
             this.moveXSpeed = 15;
             this.useCollision.enabled = false;
         }
-    },
-
-    onCollisionStay:function(other){
-        // console.log("stay");
-    },
-
-    onCollisionExit:function(other){
-        // console.log("exit");
     },
 
     step:function(){

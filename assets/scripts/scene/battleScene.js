@@ -16,7 +16,6 @@ cc.Class({
             "entityManager",
             "layerManager",
             "poolManager",
-            "resourceManager",
             "visionManager"
         ];
 
@@ -31,7 +30,7 @@ cc.Class({
                 battle.nowDungeonManager = battle[this.allManager[i]];
             }
         }
-        battle.resourceManager.loadBaseResource(this.loadComplete.bind(this));
+        this.loadComplete();
     },
 
     loadComplete:function (params) {

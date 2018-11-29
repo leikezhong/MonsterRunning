@@ -1,3 +1,4 @@
+//延迟跟随角色跳跃
 var monsterEntity = require("monsterEntity");
 cc.Class({
     extends:monsterEntity,
@@ -30,6 +31,7 @@ cc.Class({
 
     onCollisionEnter:function(other){
         // console.log("enter");
+        this._super();
         if(other.entityType == gameConst.ENTITY_TYPE.CHARACTER){
             if(this.entityYDirect == 1){
                 if(this.nowEntityPos.y >= other.nowEntityPos.y){
@@ -49,14 +51,6 @@ cc.Class({
                 }
             }
         }
-    },
-
-    onCollisionStay:function(other){
-        // console.log("stay");
-    },
-
-    onCollisionExit:function(other){
-        // console.log("exit");
     },
 
     step:function(){
