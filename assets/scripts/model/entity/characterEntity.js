@@ -18,6 +18,7 @@ cc.Class({
         this.canOperate = true;
         this.canJump = true;
         this.canChangeYDirect = true;
+        this.allBuffs = [];
     },
 
     initEntity:function(){

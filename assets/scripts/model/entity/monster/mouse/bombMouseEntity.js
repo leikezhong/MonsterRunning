@@ -1,4 +1,4 @@
-//有角度飞入，碰撞地面，晕眩还在地面的主角
+//会爆炸
 var monsterEntity = require("monsterEntity");
 cc.Class({
     extends:monsterEntity,
@@ -6,7 +6,7 @@ cc.Class({
     initParams:function(){
         this._super();
         this.entityType = gameConst.ENTITY_TYPE.MONSTER3;
-        this.prefabName = "impactMouse_prefab";
+        this.prefabName = "bombMouse_prefab";
         this.moveXSpeed = 5;
         this.moveYSpeed = 3;
     },
@@ -21,10 +21,7 @@ cc.Class({
     setMainEntityGiddy:function(){
         if(this.entityYDirect == 1){
             if(battle.battleManager.mainEntity.nowEntityPos.y == 0){
-                //创建特效，晕眩角色
-                if(battle.battleManager.mainEntity.startJumpStatus){
-                    
-                }
+                
             }
         }
         battle.poolManager.putInPool(this);
