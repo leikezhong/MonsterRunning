@@ -17,3 +17,22 @@
 17、风云雷雨
 18、虎力、羊力、鹿力
 19、冰冻
+
+/*
+mouse dungeon:
+1.round mouse:it moves forward, character can jump and step on this, it will move back and can collision with others.
+2.jump mouse:it can jump after character jump.
+3.impact mouse:it can fly from the sky, and it has an angle, it hits the ground and can giddy the character when character on ground.
+4.bomb mouse:it can bomb, and hurt the character.
+5.laser mouse:it can release linear laser light and has random angle.
+6.fast mouse:it moves quickly, and has random y position.
+7.boss mouse:it is big mouse, it has some skills. first it can create other mouse, second it moves up or down, release linear laser, third it can scream and giddy the character on ground when character on ground.
+
+cattle dungeon:
+1.round cattle:it moves forwards by up and down.
+2.ride cattle:character can ride this cattle, and move forward, it can hit other cattle, character can not change direct, if character change direct character will dismount.
+3.group cattle:two or three cattle move forward.
+4.speed cattle:when it close to the character, it will move quickly.
+5.leak cattle:it can fly and move circle like inflatable balloon leak.
+6.boss cattle:it is big cattle, it has some skills. first it can create other cattle, second it will fly to the sky and quickly landing to hit character, third it can shoot its horn, fourth it can move back and forth, last it will dead while it has no strength.
+*/
