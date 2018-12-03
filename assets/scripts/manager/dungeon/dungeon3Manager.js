@@ -1,4 +1,4 @@
-var monster3Entity = require("monster3Entity");
+var impactMouseEntity = require("impactMouseEntity");
 cc.Class({
     init:function () {
         // console.log("---init dungeon1Manager---");
@@ -8,7 +8,7 @@ cc.Class({
     initDungeon:function(){
         this.dungeonCount = 0;
         for(var i = 0; i < 10; i++){
-            var mon = new monster3Entity();
+            var mon = new impactMouseEntity();
             mon.init();
             mon.setEntityPos(2000, 0);
             battle.poolManager.putInPool(mon);
@@ -26,7 +26,7 @@ cc.Class({
     createMonsterStep : function(){
         let mon = battle.poolManager.getFromPool(gameConst.ENTITY_TYPE.MONSTER1);
         if(!mon){
-            mon = new monster3Entity();
+            mon = new impactMouseEntity();
             mon.init();
         }else{
             mon.getFromPool();

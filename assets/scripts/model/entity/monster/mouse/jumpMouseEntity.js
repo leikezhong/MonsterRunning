@@ -6,7 +6,7 @@ cc.Class({
     initParams:function(){
         this._super();
         this.entityType = gameConst.ENTITY_TYPE.MONSTER1;
-        this.prefabName = "monster1_prefab";
+        this.prefabName = "jumpMouse_prefab";
         this.moveXSpeed = 5;
         this.startJumpStatus = false;
         this.jumpCut = 0.7;

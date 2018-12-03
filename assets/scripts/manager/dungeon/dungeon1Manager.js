@@ -1,4 +1,4 @@
-var monster1Entity = require("monster1Entity");
+var roundMouseEntity = require("roundMouseEntity");
 cc.Class({
     init:function () {
         // console.log("---init dungeon1Manager---");
@@ -8,7 +8,7 @@ cc.Class({
     initDungeon:function(){
         this.dungeonCount = 0;
         for(var i = 0; i < 10; i++){
-            var mon = new monster1Entity();
+            var mon = new roundMouseEntity();
             mon.init();
             mon.setEntityPos(2000, 0);
             battle.poolManager.putInPool(mon);
@@ -26,7 +26,7 @@ cc.Class({
     createMonsterStep : function(){
         let mon = battle.poolManager.getFromPool(gameConst.ENTITY_TYPE.MONSTER1);
         if(!mon){
-            mon = new monster1Entity();
+            mon = new roundMouseEntity();
             mon.init();
         }else{
             mon.getFromPool();

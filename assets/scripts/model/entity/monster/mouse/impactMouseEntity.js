@@ -6,7 +6,7 @@ cc.Class({
     initParams:function(){
         this._super();
         this.entityType = gameConst.ENTITY_TYPE.MONSTER3;
-        this.prefabName = "monster3_prefab";
+        this.prefabName = "impactMouse_prefab";
         this.moveXSpeed = 5;
         this.moveYSpeed = 3;
     },
