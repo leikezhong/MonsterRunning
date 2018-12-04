@@ -37,10 +37,10 @@ cc.Class({
     },
 
     createMonsterStep : function(){
-        let monIndex = Math.floor(battle.battleManager.getRandom() * 7);
+        let monIndex = Math.floor(battle.battleManager.getRandom() * 6);
         let mon = battle.poolManager.getFromPool(101 + monIndex);
         if(!mon){
-            mon = this.dungeonEntity[monIndex];
+            mon = new this.dungeonEntity[monIndex];
             mon.init();
         }else{
             mon.getFromPool();

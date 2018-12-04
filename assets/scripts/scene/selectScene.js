@@ -19,7 +19,7 @@ cc.Class({
 
     loadComplete:function(){
         for(let i = 0; i < 10; i++){
-            let dungeonBtn = cc.instantiate(cc.loader.getRes("prefab/dungeon_btn_prefab"));
+            let dungeonBtn = cc.instantiate(cc.loader.getRes("prefab/base/dungeon_btn_prefab"));
             dungeonBtn.parent = this.dungeon_layout.node;
             dungeonBtn.name = (i + 1) + "";
             dungeonBtn.getChildByName("dungeon_index").getComponent(cc.Label).string = (i + 1);

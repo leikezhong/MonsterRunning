@@ -27,7 +27,7 @@ cc.Class({
     getFromPool:function(){
         this._super();
         this.useCollision.enabled = true;
-        this.useEntity.active = false;
+        this.useEntity.active = true;
     },
 
     putInPool:function(){

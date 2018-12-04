@@ -24,7 +24,7 @@ cc.Class({
     },
 
     initEntity:function(){
-        this.useEntity = cc.instantiate(cc.loader.getRes("prefab/character_prefab"));
+        this.useEntity = cc.instantiate(cc.loader.getRes("prefab/base/character_prefab"));
         this.useEntity.parent = battle.layerManager.playerLayer;
 
         this.useCollision = this.useEntity.getChildByName("character_collision").getComponent(cc.CircleCollider);
@@ -45,7 +45,7 @@ cc.Class({
 
     removeBuff:function(type){
         if(this.allBuffs[type]){
-            delete this.allBuffs[key];
+            delete this.allBuffs[type];
             this.allBuffsKey = Object.keys(this.allBuffs);
         }
     },

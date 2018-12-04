@@ -6,14 +6,14 @@ cc.Class({
     initParams:function(){
         this._super();
         this.entityType = gameConst.ENTITY_TYPE.MONSTER106;
-        this.prefabName = "fastMouse_prefab";
-        this.moveXSpeed = 5;
+        this.prefabName = "mouse/fastMouse_prefab";
+        this.moveXSpeed = 10;
     },
 
     resetStatus:function(xPos, yPos, type){
         this.entityYDirect = type;
         this.moveType = -1;
-        this.moveXSpeed = 5;
+        this.moveXSpeed = 10;
         this.setEntityPos(xPos, type==1?(yPos+this.useCollisionHei*.5):(-yPos-this.useCollisionHei*.5));
     },
     
@@ -25,9 +25,6 @@ cc.Class({
     moveStep:function(){
         this.setEntityPosX(this.nowEntityPos.x + this.moveType * this.moveXSpeed);
         if(this.nowEntityPos.x < -200 || this.nowEntityPos.x > battle.battleManager.winSize.width + 200){
-            battle.poolManager.putInPool(this);
-        }
-        if(this.nowEntityPos.x <= battle.battleManager.mainEntity.nowEntityPos.x + 50){
             battle.poolManager.putInPool(this);
         }
     },

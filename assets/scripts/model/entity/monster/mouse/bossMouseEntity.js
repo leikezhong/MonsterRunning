@@ -6,7 +6,7 @@ cc.Class({
     initParams:function(){
         this._super();
         this.entityType = gameConst.ENTITY_TYPE.MONSTER107;
-        this.prefabName = "bossMouse_prefab";
+        this.prefabName = "mouse/bossMouse_prefab";
         this.moveXSpeed = 5;
     },
 
