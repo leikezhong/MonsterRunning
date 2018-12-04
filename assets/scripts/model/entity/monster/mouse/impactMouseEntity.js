@@ -5,7 +5,7 @@ cc.Class({
 
     initParams:function(){
         this._super();
-        this.entityType = gameConst.ENTITY_TYPE.MONSTER3;
+        this.entityType = gameConst.ENTITY_TYPE.MONSTER103;
         this.prefabName = "impactMouse_prefab";
         this.moveXSpeed = 5;
         this.moveYSpeed = 3;
@@ -22,8 +22,15 @@ cc.Class({
         if(this.entityYDirect == 1){
             if(battle.battleManager.mainEntity.nowEntityPos.y == 0){
                 //创建特效，晕眩角色
-                if(battle.battleManager.mainEntity.startJumpStatus){
-                    
+                if(!battle.battleManager.mainEntity.startJumpStatus){
+                    battle.battleManager.mainEntity.addBuff(gameConst.BUFF_TYPE.GIDDY_BUFF, 120);
+                }
+            }
+        }else if(this.entityYDirect == -1){
+            if(battle.battleManager.mainEntity.nowEntityPos.y == -battle.battleManager.mainEntity.useRadius * 2){
+                //创建特效，晕眩角色
+                if(!battle.battleManager.mainEntity.startJumpStatus){
+                    battle.battleManager.mainEntity.addBuff(gameConst.BUFF_TYPE.GIDDY_BUFF, 120);
                 }
             }
         }

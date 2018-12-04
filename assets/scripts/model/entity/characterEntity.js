@@ -18,7 +18,9 @@ cc.Class({
         this.canOperate = true;
         this.canJump = true;
         this.canChangeYDirect = true;
-        this.allBuffs = [];
+        this.allBuffs = {};
+        this.allBuffsKey = [];
+        this.buffI = 0;
     },
 
     initEntity:function(){
@@ -29,6 +31,22 @@ cc.Class({
         if(this.useCollision){
             this.useRadius = this.useCollision.radius;
             this.useCollision.host = this;
+        }
+    },
+
+    addBuff:function(type, time){
+        if(!this.allBuffs[type]){
+            var nowBuff = require(type);
+            this.allBuffs[type] = new nowBuff();
+            this.allBuffsKey = Object.keys(this.allBuffs);
+        }
+        this.allBuffs[type].init(this, time);
+    },
+
+    removeBuff:function(type){
+        if(this.allBuffs[type]){
+            delete this.allBuffs[key];
+            this.allBuffsKey = Object.keys(this.allBuffs);
         }
     },
 
@@ -62,9 +80,7 @@ cc.Class({
     },
 
     startJump:function(){
-        if(!this.canOperate) return;
-        if(!this.canJump)   return;
-        if(!this.canChangeYDirect)  return;
+        if(!this.canOperate || !this.canJump || !this.canChangeYDirect) return;
         if(!this.startJumpStatus){
             this.jumpStartY = this.nowEntityPos.y;
             this.startJumpStatus = true;
@@ -73,9 +89,7 @@ cc.Class({
     },
 
     changeDirect:function(){
-        if(!this.canOperate) return;
-        if(!this.canJump)   return;
-        if(!this.canChangeYDirect)  return;
+        if(!this.canOperate || !this.canJump || !this.canChangeYDirect) return;
         if(!this.startJumpStatus){
             this.entityYDirect = -this.entityYDirect;
             this.setEntityPosY(this.nowEntityPos.y + this.entityYDirect * this.useRadius * 2);
@@ -84,7 +98,16 @@ cc.Class({
 
     step:function(){
         this._super();
+        this.buffStep();
         this.jumpStep();
+    },
+
+    buffStep:function(){
+        for(this.buffI = this.allBuffsKey.length - 1; this.buffI >= 0; this.buffI--){
+            if(this.allBuffsKey[this.buffI] && this.allBuffs[this.allBuffsKey[this.buffI]]){
+                this.allBuffs[this.allBuffsKey[this.buffI]].step();
+            }
+        }
     },
 
     jumpStep:function(){

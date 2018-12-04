@@ -5,8 +5,8 @@ cc.Class({
 
     initParams:function(){
         this._super();
-        this.entityType = gameConst.ENTITY_TYPE.MONSTER104;
-        this.prefabName = "bombMouse_prefab";
+        this.entityType = gameConst.ENTITY_TYPE.MONSTER106;
+        this.prefabName = "fastMouse_prefab";
         this.moveXSpeed = 5;
     },
 
@@ -16,7 +16,7 @@ cc.Class({
         this.moveXSpeed = 5;
         this.setEntityPos(xPos, type==1?(yPos+this.useCollisionHei*.5):(-yPos-this.useCollisionHei*.5));
     },
-
+    
     step:function(){
         this._super();
         this.moveStep();

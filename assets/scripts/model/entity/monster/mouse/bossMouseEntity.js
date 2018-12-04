@@ -5,8 +5,8 @@ cc.Class({
 
     initParams:function(){
         this._super();
-        this.entityType = gameConst.ENTITY_TYPE.MONSTER104;
-        this.prefabName = "bombMouse_prefab";
+        this.entityType = gameConst.ENTITY_TYPE.MONSTER107;
+        this.prefabName = "bossMouse_prefab";
         this.moveXSpeed = 5;
     },
 
@@ -19,16 +19,11 @@ cc.Class({
 
     step:function(){
         this._super();
-        this.moveStep();
     },
 
     moveStep:function(){
-        this.setEntityPosX(this.nowEntityPos.x + this.moveType * this.moveXSpeed);
-        if(this.nowEntityPos.x < -200 || this.nowEntityPos.x > battle.battleManager.winSize.width + 200){
-            battle.poolManager.putInPool(this);
-        }
-        if(this.nowEntityPos.x <= battle.battleManager.mainEntity.nowEntityPos.x + 50){
-            battle.poolManager.putInPool(this);
+        if(this.nowEntityPos.x > battle.battleManager.winSize.width - 200){
+            this.setEntityPosX(this.nowEntityPos.x + this.moveType * this.moveXSpeed);
         }
     },
 

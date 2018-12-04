@@ -5,7 +5,7 @@ cc.Class({
 
     initParams:function(){
         this._super();
-        this.entityType = gameConst.ENTITY_TYPE.MONSTER1;
+        this.entityType = gameConst.ENTITY_TYPE.MONSTER102;
         this.prefabName = "jumpMouse_prefab";
         this.moveXSpeed = 5;
         this.startJumpStatus = false;
@@ -18,7 +18,7 @@ cc.Class({
         this.entityYDirect = type;
         this.moveType = -1;
         this.moveXSpeed = 5;
-        this.setEntityPos(xPos, type==1?(yPos+this.useCollisionHei*.5):(-yPos-this.useCollisionHei*.5));
+        this.setEntityPos(xPos, type==1?this.useCollisionHei*.5:-this.useCollisionHei*.5);
     },
 
     startJump:function(){

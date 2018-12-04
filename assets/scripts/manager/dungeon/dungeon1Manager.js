@@ -1,4 +1,3 @@
-var roundMouseEntity = require("roundMouseEntity");
 cc.Class({
     init:function () {
         // console.log("---init dungeon1Manager---");
@@ -6,12 +5,26 @@ cc.Class({
     },
 
     initDungeon:function(){
+        this.dungeonMonsters = [
+            "roundMouseEntity",
+            "jumpMouseEntity",
+            "impactMouseEntity",
+            "bombMouseEntity",
+            "laserMouseEntity",
+            "fastMouseEntity",
+            "bossMouseEntity"
+        ];
+        this.dungeonEntity = [];
         this.dungeonCount = 0;
-        for(var i = 0; i < 10; i++){
-            var mon = new roundMouseEntity();
-            mon.init();
-            mon.setEntityPos(2000, 0);
-            battle.poolManager.putInPool(mon);
+        for(let i = 0; i < this.dungeonMonsters.length; i++){
+            let nowMonster = require(this.dungeonMonsters[i]);
+            this.dungeonEntity.push(nowMonster);
+            for(let j = 0; j < 10; j++){
+                let mon = new nowMonster();
+                mon.init();
+                mon.setEntityPos(2000, 0);
+                battle.poolManager.putInPool(mon);
+            }
         }
     },
 
@@ -24,9 +37,10 @@ cc.Class({
     },
 
     createMonsterStep : function(){
-        let mon = battle.poolManager.getFromPool(gameConst.ENTITY_TYPE.MONSTER1);
+        let monIndex = Math.floor(battle.battleManager.getRandom() * 7);
+        let mon = battle.poolManager.getFromPool(101 + monIndex);
         if(!mon){
-            mon = new roundMouseEntity();
+            mon = this.dungeonEntity[monIndex];
             mon.init();
         }else{
             mon.getFromPool();
