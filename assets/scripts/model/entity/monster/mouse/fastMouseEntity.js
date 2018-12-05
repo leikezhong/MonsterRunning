@@ -7,13 +7,13 @@ cc.Class({
         this._super();
         this.entityType = gameConst.ENTITY_TYPE.MONSTER106;
         this.prefabName = "mouse/fastMouse_prefab";
-        this.moveXSpeed = 10;
+        this.moveXSpeed = battle.nowDungeonManager.dungeonMoveXSpeed * 2;
     },
 
     resetStatus:function(xPos, yPos, type){
         this.entityYDirect = type;
         this.moveType = -1;
-        this.moveXSpeed = 10;
+        this.moveXSpeed = battle.nowDungeonManager.dungeonMoveXSpeed;
         this.setEntityPos(xPos, type==1?(yPos+this.useCollisionHei*.5):(-yPos-this.useCollisionHei*.5));
     },
     

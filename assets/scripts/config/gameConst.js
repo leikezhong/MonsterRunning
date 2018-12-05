@@ -1,15 +1,19 @@
 var gameConst = {
     ENTITY_TYPE:{
         CHARACTER:0,
-        MONSTER101:101,
-        MONSTER102:102,
-        MONSTER103:103,
-        MONSTER104:104,
-        MONSTER105:105,
-        MONSTER106:106,
-        MONSTER107:107,
-        MONSTER108:108,
-        MONSTER109:109,
+        MONSTER101:"m101",
+        MONSTER102:"m102",
+        MONSTER103:"m103",
+        MONSTER104:"m104",
+        MONSTER105:"m105",
+        MONSTER106:"m106",
+        MONSTER107:"m107",
+        MONSTER108:"m108",
+        MONSTER109:"m109",
+
+
+        SKILL101:"s101",
+        SKILL102:"s102"
     },
 
     BUFF_TYPE:{

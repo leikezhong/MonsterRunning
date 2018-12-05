@@ -22,6 +22,11 @@ cc.Class({
             this.useCollisionHei = this.useCollision.size.height;
             this.useCollision.host = this;
         }
+
+        this.dragon = this.useEntity.getChildByName("monster_ani").getComponent(dragonBones.ArmatureDisplay);
+        if(this.dragon){
+            this.dragon.addEventListener(dragonBones.EventObject.COMPLETE,this.animEventListenerHandler,this);
+        }
     },
 
     getFromPool:function(){
@@ -37,27 +42,8 @@ cc.Class({
         // this.setEntityPos(-1000, 0);
     },
 
-    setDead:function(){
-        battle.poolManager.putInPool(this);
-    },
-
     onCollisionEnter:function(other){
         // console.log("enter");
-        if(other.entityType == gameConst.ENTITY_TYPE.CHARACTER){
-            if(this.entityYDirect == 1){
-                if(this.nowEntityPos.y >= other.nowEntityPos.y){
-                    battle.battleManager.gameOver();
-                }else{
-                    this.setDead();
-                }
-            }else if(this.entityYDirect == -1){
-                if(this.nowEntityPos.y <= other.nowEntityPos.y){
-                    battle.battleManager.gameOver();
-                }else{
-                    this.setDead();
-                }
-            }
-        }
     },
 
     onCollisionStay:function(other){

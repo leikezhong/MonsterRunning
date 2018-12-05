@@ -1,5 +1,6 @@
 //会爆炸
 var monsterEntity = require("monsterEntity");
+var bombMouseSkill1Entity = require("bombMouseSkill1Entity");
 cc.Class({
     extends:monsterEntity,
 
@@ -7,14 +8,24 @@ cc.Class({
         this._super();
         this.entityType = gameConst.ENTITY_TYPE.MONSTER104;
         this.prefabName = "mouse/bombMouse_prefab";
-        this.moveXSpeed = 5;
+        this.moveXSpeed = battle.nowDungeonManager.dungeonMoveXSpeed;
     },
 
     resetStatus:function(xPos, yPos, type){
         this.entityYDirect = type;
         this.moveType = -1;
-        this.moveXSpeed = 5;
+        this.moveXSpeed = battle.nowDungeonManager.dungeonMoveXSpeed;
         this.setEntityPos(xPos, type==1?(yPos+this.useCollisionHei*.5):(-yPos-this.useCollisionHei*.5));
+    },
+
+    startBomb:function(){
+        var skill = battle.poolManager.getFromPool(gameConst.ENTITY_TYPE.SKILL101);
+        if(!skill){
+            skill = new bombMouseSkill1Entity();
+            skill.init();
+        }
+        skill.resetStatus(this.nowEntityPos.x, this.nowEntityPos.y);
+        battle.poolManager.putInPool(this);
     },
 
     step:function(){
@@ -28,7 +39,7 @@ cc.Class({
             battle.poolManager.putInPool(this);
         }
         if(this.nowEntityPos.x <= battle.battleManager.mainEntity.nowEntityPos.x + 50){
-            battle.poolManager.putInPool(this);
+            this.startBomb();
         }
     },
 

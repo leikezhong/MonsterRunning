@@ -7,7 +7,7 @@ cc.Class({
         this._super();
         this.entityType = gameConst.ENTITY_TYPE.MONSTER102;
         this.prefabName = "mouse/jumpMouse_prefab";
-        this.moveXSpeed = 5;
+        this.moveXSpeed = battle.nowDungeonManager.dungeonMoveXSpeed;
         this.startJumpStatus = false;
         this.jumpCut = 0.7;
         this.jumpMaxVelY = 20;
@@ -17,7 +17,7 @@ cc.Class({
     resetStatus:function(xPos, yPos, type){
         this.entityYDirect = type;
         this.moveType = -1;
-        this.moveXSpeed = 5;
+        this.moveXSpeed = battle.nowDungeonManager.dungeonMoveXSpeed;
         this.setEntityPos(xPos, type==1?this.useCollisionHei*.5:-this.useCollisionHei*.5);
     },
 

@@ -16,6 +16,9 @@ cc.Class({
         ];
         this.dungeonEntity = [];
         this.dungeonCount = 0;
+        this.dungeonMoveXSpeed = 5;
+        this.dungeonMoveXMaxSpeed = 15;
+        this.dungeonMoveYSpeed = 5;
         for(let i = 0; i < this.dungeonMonsters.length; i++){
             let nowMonster = require(this.dungeonMonsters[i]);
             this.dungeonEntity.push(nowMonster);
@@ -38,7 +41,7 @@ cc.Class({
 
     createMonsterStep : function(){
         let monIndex = Math.floor(battle.battleManager.getRandom() * 6);
-        let mon = battle.poolManager.getFromPool(101 + monIndex);
+        let mon = battle.poolManager.getFromPool("m" + (101 + monIndex));
         if(!mon){
             mon = new this.dungeonEntity[monIndex];
             mon.init();
@@ -50,6 +53,11 @@ cc.Class({
     },
 
     clear:function(){
-        
+        if(this.dungeonEntity){
+            this.dungeonEntity.length = 0;
+        }
+        if(this.dungeonMonsters){
+            this.dungeonMonsters.length = 0;
+        }
     }
 });

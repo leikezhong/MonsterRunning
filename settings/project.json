@@ -14,16 +14,24 @@
       false,
       false,
       true,
-      true
-    ],
-    [
-      false,
       true,
       true
     ],
     [
       false,
       true,
+      true
+    ],
+    [
+      false,
+      true,
+      false,
+      false
+    ],
+    [
+      false,
+      true,
+      false,
       false,
       false
     ]
@@ -37,7 +45,8 @@
     "default",
     "char",
     "mon1",
-    "mon2"
+    "mon2",
+    "skill1"
   ],
   "simulator-orientation": true,
   "simulator-resolution": {

@@ -30,7 +30,7 @@ cc.Class({
                 battle.nowDungeonManager = battle[this.allManager[i]];
             }
         }
-        this.loadComplete();
+        battle.resourceManager.loadBaseResource(["mouse"], this.loadComplete.bind(this));
     },
 
     loadComplete:function (params) {
@@ -76,7 +76,6 @@ cc.Class({
         battle.resourceManager.clear();
 
         for(let i = 0; i < this.allManager.length; i++){
-            let manager = require(this.allManager[i]);
             battle[this.allManager[i]] = null;
         }
     }
